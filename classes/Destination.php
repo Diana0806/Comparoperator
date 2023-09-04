@@ -1,11 +1,12 @@
 <?php
-    class Destination {
+    class Destination extends Manager {
         private $id;
         private $location;
         private $price;
+        protected $table = "destination";
 
-        public function __construct($data) {
-            
+        public function __construct() {
+                parent::__construct();
         }
 
         public function getId()

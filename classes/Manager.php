@@ -9,16 +9,16 @@ require_once ('./config/database.php');
             $this->pdo = getPdo();
         }
 
-        public function getAll( int $id) {
-            $query = $this->pdo->prepare("SELECT * FROM {$this->table} WHERE id = :id");
-            $query->execute(['id' => $id]);
+        public function getAll(): array {
+            $query = $this->pdo->prepare("SELECT * FROM {$this->table}");
+            $query->execute();
             $item = $query->fetchAll();
             return $item;
         }
 
         public function delete( int $id) : void{
-          $query = $this->pdo->prepare("DELETE FROM {$this->table} WHERE id = :id");
-          $query->execute(['id' => $id]);  
+        $query = $this->pdo->prepare("DELETE FROM {$this->table} WHERE id = :id");
+        $query->execute(['id' => $id]);  
     }
 
     public function findAllBy(?string $order ="") : array {

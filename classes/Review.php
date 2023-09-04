@@ -1,11 +1,11 @@
 <?php
-    class Review {
+    class Review extends Manager{
         private $id;
         private $message;
         private $author;
 
-        public function __construct($data) {
-            
+        public function __construct() {
+                
         }
 
         public function getId()

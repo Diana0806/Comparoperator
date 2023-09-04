@@ -1,5 +1,5 @@
 <?php
-    class Certificate {
+    class Certificate extends Manager {
         private $expiresAt;
         private $signatory;
 

@@ -1,5 +1,5 @@
 <?php
-    class Score {
+    class Score extends Manager {
         private $id;
         private $value;
         private $author;
