@@ -1,6 +1,6 @@
 <?php 
 
-require_once ('./config/database.php');
+require_once ('../config/database.php');
     class Manager {
         protected $pdo;
         protected $table;
@@ -15,6 +15,7 @@ require_once ('./config/database.php');
             $item = $query->fetchAll();
             return $item;
         }
+
         public function getAllOperator() {
             $query = $this->pdo->prepare("SELECT * FROM tour_operator");
             $query->execute();
@@ -22,7 +23,7 @@ require_once ('./config/database.php');
             return $item;
         }
         public function getOperatorByDestination() {
-            $query = $this->pdo->prepare("SELECT * FROM destination AND SELECT :id, :name FROM tour_operator WHERE t.id= :tour_operator_id ");
+            $query = $this->pdo->prepare("SELECT * FROM destination INNER JOIN tour_operator ON destination.tour_operator_id = tour_operator.id");
             $query->execute();
             $item = $query->fetchAll();
             return $item;
@@ -65,6 +66,19 @@ require_once ('./config/database.php');
 
             
         }
-}
 
-?>
+        
+            public function createReview($operatorId, $message, $authorId)
+            {
+                $sql = "INSERT INTO review (message, tour_operator_id, author_id) VALUES (:message, :tour_operator_id, :author_id)";
+                $data = [
+                    'message' => $message,
+                    'tour_operator_id' => $operatorId,
+                    'author_id' => $authorId,
+                ];
+        
+                $query = $this->pdo->prepare($sql);
+                $query->execute($data);
+            }
+        }
+        
