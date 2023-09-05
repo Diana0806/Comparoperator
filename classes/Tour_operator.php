@@ -1,5 +1,5 @@
 <?php
-    class TourOperator extends Manager {
+    class Tour_operator extends Manager {
         private $id;
         private $name;
         private $link;
@@ -7,9 +7,10 @@
         private $destinations;
         private $reviews;
         private $scores;
+        protected $table = "tour_operator";
 
-        public function __construct($data) {
-
+        public function __construct() {
+                parent::__construct();
         }
 
         public function isPremium() {
