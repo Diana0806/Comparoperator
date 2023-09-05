@@ -1,6 +1,6 @@
 <?php 
 
-require_once ('./config/database.php');
+require_once ('../config/database.php');
     class Manager {
         protected $pdo;
         protected $table;
@@ -30,6 +30,6 @@ require_once ('./config/database.php');
         $articles = $resulats->fetchAll();
         return $articles;
     }
-}
 
-?>
+    
+}

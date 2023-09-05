@@ -9,28 +9,32 @@ require_once ('./config/database.php');
             $this->pdo = getPdo();
         }
 
-        public function getAll(): array {
-            $query = $this->pdo->prepare("SELECT * FROM {$this->table}");
+        public function getAllDestination() {
+            $query = $this->pdo->prepare("SELECT * FROM destination");
             $query->execute();
-            $className = ucfirst($this->table);
-            $item = $query->fetchAll(PDO::FETCH_CLASS, $className);
+            $item = $query->fetchAll();
+            return $item;
+        }
+        public function getAllOperator() {
+            $query = $this->pdo->prepare("SELECT * FROM tour_operator");
+            $query->execute();
+            $item = $query->fetchAll();
+            return $item;
+        }
+        public function getOperatorByDestination() {
+            $query = $this->pdo->prepare("SELECT * FROM destination AND SELECT :id, :name FROM tour_operator WHERE t.id= :tour_operator_id ");
+            $query->execute();
+            $item = $query->fetchAll();
             return $item;
         }
 
+     
         public function delete( int $id) : void{
           $query = $this->pdo->prepare("DELETE FROM {$this->table} WHERE id = :id");
           $query->execute(['id' => $id]);  
     }
 
-        public function findAllBy(?string $order ="") : array {
-            $sql = $this->pdo->prepare("SELECT * FROM {$this->table}");
-            if($order) {
-                $sql .= " ORDER BY " . $order;
-            }
-            $resulats = $this->pdo->query($sql);
-            $articles = $resulats->fetchAll();
-            return $articles;
-        }
+  
 
         public function registerAuthor(Author $author): void
         {
