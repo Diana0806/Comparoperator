@@ -36,7 +36,7 @@ class Manager
 
     public function getOperatorByDestination()
     {
-        $query = $this->pdo->prepare("SELECT DISTINCT tour_operator.id, tour_operator.name, tour_operator.link FROM tour_operator
+        $query = $this->pdo->prepare("SELECT tour_operator.id, tour_operator.name, tour_operator.link FROM tour_operator
                                     INNER JOIN destination D ON tour_operator.id = D.tour_operator_id");
     $query->execute();
     $items = $query->fetchAll(PDO::FETCH_CLASS, 'Tour_operator');
