@@ -1,8 +1,8 @@
 <?php
     class Destination extends Manager {
-        private $id;
-        private $location;
-        private $price;
+        protected $id;
+        protected $location;
+        protected $price;
         protected $table = "destination";
 
         public function __construct() {

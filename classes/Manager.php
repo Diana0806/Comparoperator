@@ -12,8 +12,15 @@ require_once ('./config/database.php');
         public function getAll(): array {
             $query = $this->pdo->prepare("SELECT * FROM {$this->table}");
             $query->execute();
-            $item = $query->fetchAll();
-            return $item;
+            $items = [];
+            while ($row = $query->fetch(PDO::FETCH_ASSOC)) {
+                $destination = new Destination();
+                $destination->id = $row['id'];
+                $destination->location = $row['location'];
+                $destination->price = $row['price'];
+                $items[] = $destination;
+            }
+            return $items;
         }
 
         public function delete( int $id) : void{
