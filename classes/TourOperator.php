@@ -1,5 +1,5 @@
 <?php
-    class TourOperator {
+    class TourOperator extends Manager {
         private $id;
         private $name;
         private $link;
