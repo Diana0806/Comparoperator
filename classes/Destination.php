@@ -3,7 +3,6 @@
         protected $id;
         protected $location;
         protected $price;
-        protected $table = "destination";
 
         public function __construct() {
                 parent::__construct();
