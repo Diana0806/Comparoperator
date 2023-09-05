@@ -1,13 +1,12 @@
 <?php
     class Tour_operator extends Manager {
-        private $id;
-        private $name;
-        private $link;
+        protected $id;
+        protected $name;
+        protected $link;
         private $certificate;
         private $destinations;
         private $reviews;
         private $scores;
-        protected $table = "tour_operator";
 
         public function __construct() {
                 parent::__construct();

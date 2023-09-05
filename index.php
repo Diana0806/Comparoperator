@@ -12,8 +12,9 @@
         require("classes/Destination.php");
 
         $destinationManager = new Destination();
-
-        $allDestinations = $destinationManager->getAll();
+        // var_dump($destinationManager);
+        $allDestinations = $destinationManager->getAllDestination();
+        // var_dump($allDestinations);
 
         foreach ($allDestinations as $destination) {
             echo "<div>";
