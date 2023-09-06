@@ -1,7 +1,6 @@
 <?php
-
-require('../config/database.php');
-require('../Models/ManagerOperateur.php');
+require_once("../config/database.php");
+require("../Models/ManagerOperateur.php");
 
 if (isset($_POST['id'])) {
 
@@ -10,6 +9,6 @@ if (isset($_POST['id'])) {
 
 insertOperateur($name, $link);
 
-header('Location: ../index.php');
+header('Location: ../indexAdmin.php');
 
 }

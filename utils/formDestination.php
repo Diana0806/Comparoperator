@@ -1,6 +1,4 @@
-
-<?php require('../config/database.php') ?>
-<form action="./insertDestination.php" method="post">
+<form action="./utils/insertDestination.php" method="post">
     <input type="hidden" name="id">
     <label for="location">La location :</label>
     <input type="text" name="location" required><br>

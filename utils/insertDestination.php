@@ -1,7 +1,6 @@
 <?php
-
-require('../config/database.php');
-require('../Models/ManagerDestination.php');
+require_once("../config/database.php");
+require("../Models/ManagerDestination.php");
 
 if (isset($_POST['id'])) {
 
@@ -11,6 +10,6 @@ if (isset($_POST['id'])) {
 
 insertDestination($location, $price, $tourOperatorId );
 
-header('Location: ../index.php');
+header('Location: ../indexAdmin.php');
 
 }

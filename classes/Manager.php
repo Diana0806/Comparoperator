@@ -30,16 +30,23 @@ class Manager
     {
         $query = $this->pdo->prepare("SELECT * FROM tour_operator");
         $query->execute();
-        $item = $query->fetchAll();
+        $item = [];
+        while ($row = $query->fetch(PDO::FETCH_ASSOC)) {
+            $TO = new Tour_operator();
+            $TO->id = $row['id'];
+            $TO->name = $row['name'];
+            $TO->link = $row['link'];
+            $item[] = $TO;
+        }
         return $item;
     }
 
     public function getOperatorsByLocation($location)
     {
         $query = $this->pdo->prepare("SELECT tour_operator.id, tour_operator.name, tour_operator.link 
-                                     FROM tour_operator
-                                     INNER JOIN destination ON tour_operator.id = destination.tour_operator_id
-                                     WHERE destination.location = :location");
+                                    FROM tour_operator
+                                    INNER JOIN destination ON tour_operator.id = destination.tour_operator_id
+                                    WHERE destination.location = :location");
         $query->execute(['location' => $location]);
         $operators = $query->fetchAll(PDO::FETCH_CLASS, 'Tour_operator');
         return $operators;
