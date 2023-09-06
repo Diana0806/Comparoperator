@@ -1,5 +1,5 @@
 
-<form action="./insertOperateur.php" method="post">
+<form action="./utils/insertOperateur.php" method="post">
 
     <input type="hidden" name="id">
     <label for="name">Identifiant</label>
