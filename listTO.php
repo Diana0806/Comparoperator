@@ -1,28 +1,37 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ComparOperator</title>
+    <title>Opérateurs par Destination</title>
 </head>
-
 <body>
+    <h1>Opérateurs par Destination</h1>
+
     <?php
     require_once("config/database.php");
     require("classes/Manager.php");
     require("classes/Tour_operator.php");
 
-    $tourOperatorManager = new Tour_operator();
-    $TOWithDestinations = $tourOperatorManager->getOperatorByDestination();
+    // Récupérez la destination depuis le paramètre GET
+    $destination = isset($_GET['destination']) ? $_GET['destination'] : null;
 
-    foreach ($TOWithDestinations as $TO) {
-        echo "<div>";
-        echo "<h2>" . $TO->getName() . "</h2>";
-        echo "<h4> Aller sur le site : " . $TO->getLink() . "</h4>";
-        echo "</div>";
+    if (!$destination) {
+        echo "La destination n'a pas été spécifiée.";
+    } else {
+        $tourOperatorManager = new Tour_operator();
+        $operatorsByDestination = $tourOperatorManager->getOperatorsByLocation($destination);
+
+        if (empty($operatorsByDestination)) {
+            echo "Aucun opérateur trouvé pour la destination : {$destination}";
+        } else {
+            echo "<h2>Opérateurs pour la destination : {$destination}</h2>";
+            echo "<ul>";
+            foreach ($operatorsByDestination as $operator) {
+                echo "<li>{$operator->getName()} (Site : <a href='{$operator->getLink()}' target='_blank'>{$operator->getLink()}</a>)</li>";
+            }
+            echo "</ul>";
+        }
     }
     ?>
 </body>
-
 </html>
