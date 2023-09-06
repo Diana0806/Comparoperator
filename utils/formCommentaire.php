@@ -1,13 +1,7 @@
+<?php require_once($_SERVER['DOCUMENT_ROOT'] . '/TpComparator/Comparoperator/config/database.php'); ?>
 
-<?php
-require('../classes/Manager.php');
-require('../classes/Tour_operator.php');
-
-
-
-?>
-
-<form action="./insertCommentaire.php" method="post">
+<form action="./utils/insertCommentaire.php" method="post">
+<input type="hidden" name="tour_operator_id" value="<?php echo $operator->getId(); ?>">
     
     <label for="message">Votre commentaire :</label>
     <textarea name="message" rows="4" required></textarea><br>

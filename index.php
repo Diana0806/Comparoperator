@@ -7,9 +7,8 @@
 </head>
 <body>
     <?php
-        require_once("config/database.php");
-        require("classes/Manager.php");
-        require("classes/Destination.php");
+        require("./classes/Manager.php");
+        require("./classes/Destination.php");
 
         $destinationManager = new Destination();
         // var_dump($destinationManager);

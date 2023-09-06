@@ -1,6 +1,7 @@
 <?php
 
-require_once('./config/database.php');
+require_once($_SERVER['DOCUMENT_ROOT'] . '/TpComparator/Comparoperator/config/database.php');
+
 class Manager
 {
     protected $pdo;
@@ -44,7 +45,7 @@ class Manager
         $operators = $query->fetchAll(PDO::FETCH_CLASS, 'Tour_operator');
         return $operators;
     }
-    
+
 
 
     public function delete(int $id): void
@@ -81,4 +82,53 @@ class Manager
             $request->execute($data);
         }
     }
+
+
+    function getAuthorIdByName($authorName)
+{
+    $pdo = getPdo();
+    
+    // Requête SQL pour obtenir l'ID de l'auteur en fonction de son nom
+    $query = $pdo->prepare('SELECT id FROM author WHERE name = :author_name');
+    $query->execute(['author_name' => $authorName]);
+
+    $row = $query->fetch(PDO::FETCH_ASSOC);
+    
+    if ($row !== false) {
+        return $row['id'];
+    } else {
+        return null; // Auteur non trouvé, retourne null
+    }
+}
+
+function createReview($message, $tourOperatorId, $authorName)
+{
+    $pdo = getPdo();
+    
+    // Obtenir l'ID de l'auteur en fonction de son nom
+    $authorId = $this->getAuthorIdByName($authorName); // Utilisez $this pour appeler la méthode de la classe courante
+    
+    // Vérifier si l'auteur existe, sinon l'ajouter
+    if ($authorId === null) {
+        // Insérer l'auteur dans la table 'author' et récupérer son nouvel ID
+        $insertAuthorQuery = $pdo->prepare('INSERT INTO author (name) VALUES (:name)');
+        $insertAuthorQuery->execute(['name' => $authorName]);
+        $authorId = $pdo->lastInsertId();
+    }
+    
+    // Insérer le commentaire dans la table 'review'
+    $insertReviewQuery = $pdo->prepare('INSERT INTO review (message, tour_operator_id, author_id) VALUES (:message, :tour_operator_id, :author_id)');
+    $insertReviewQuery->execute([
+        'message' => $message,
+        'tour_operator_id' => $tourOperatorId,
+        'author_id' => $authorId
+    ]);
+}
+
+    
+
+    
+
+  
+    
 }

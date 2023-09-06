@@ -1,21 +1,19 @@
-
-
 <?php
 
-require('../config/database.php');
-require('./classes/Manager.php');
+require_once($_SERVER['DOCUMENT_ROOT'] . '/TpComparator/Comparoperator/classes/Manager.php'); 
 
 if (isset($_POST['submit'])) {
     $message = $_POST['message'];
     $authorName = $_POST['author_name'];
+    $tourOperatorId = $_POST['tour_operator_id'];
 
-    createReview($message, $authorName);
+    $manager = new Manager;
+    $manager2 = new Manager;
+    $manager2->getAuthorIdByName($authorName);
+    $manager->createReview($message, $tourOperatorId, $authorName);
 
-    // header('Location: confirmation_commentaire.php');
+   
+    header('Location: ../listTO.php?destination=  <?= ?>');
+    exit();
 }
 ?>
-
-
-
-
-
