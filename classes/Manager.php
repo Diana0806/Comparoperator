@@ -22,6 +22,7 @@ class Manager
             $destination->id = $row['id'];
             $destination->location = $row['location'];
             $destination->price = $row['price'];
+            $destination->image = $row['image'];
             $item[] = $destination;
         }
         return $item;
@@ -44,11 +45,13 @@ class Manager
 
     public function getOperatorsByLocation($location)
     {
-        $query = $this->pdo->prepare("SELECT tour_operator.id, tour_operator.name, tour_operator.link 
+        $query = $this->pdo->prepare("SELECT tour_operator.id, tour_operator.name, tour_operator.link, destination.price
                                     FROM tour_operator
                                     INNER JOIN destination ON tour_operator.id = destination.tour_operator_id
                                     WHERE destination.location = :location");
-        $query->execute(['location' => $location]);
+        $query->execute([
+                            'location' => $location,
+                        ]);
         $operators = $query->fetchAll(PDO::FETCH_CLASS, 'Tour_operator');
         return $operators;
     }

@@ -3,6 +3,7 @@
         protected $id;
         protected $location;
         protected $price;
+        protected $image;
 
         public function __construct() {
                 parent::__construct();
@@ -21,5 +22,10 @@
         public function getPrice()
         {
                 return $this->price;
+        }
+
+        public function getImage()
+        {
+                return $this->image;
         }
     }
