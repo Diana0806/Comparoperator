@@ -9,5 +9,7 @@
     <label for="author_name">Nom de l'auteur :</label>
     <input type="text" name="author_name" required><br>
 
+    <input type="hidden" name="destination" value="<?php echo $destination; ?>">
+
     <input type="submit" name="submit" value="Ajouter le commentaire">
 </form>

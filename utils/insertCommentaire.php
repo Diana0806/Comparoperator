@@ -1,6 +1,7 @@
 <?php
 
 require_once($_SERVER['DOCUMENT_ROOT'] . '/TpComparator/Comparoperator/classes/Manager.php'); 
+require("../classes/Destination.php");
 
 if (isset($_POST['submit'])) {
     $message = $_POST['message'];
@@ -11,9 +12,9 @@ if (isset($_POST['submit'])) {
     $manager2 = new Manager;
     $manager2->getAuthorIdByName($authorName);
     $manager->createReview($message, $tourOperatorId, $authorName);
+    $redirectUrl = "listTO.php?destination=" . $_POST['destination'];
 
-   
-    header('Location: ../listTO.php?destination=  <?= ?>');
+    header('Location: ../' . $redirectUrl);
     exit();
 }
 ?>
