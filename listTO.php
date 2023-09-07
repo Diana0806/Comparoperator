@@ -28,9 +28,9 @@
             echo "<ul>";
             foreach ($operatorsByDestination as $operator) {
                 echo "<li>{$operator->getName()} (Site : <a href='{$operator->getLink()}' target='_blank'>{$operator->getLink()}</a>)</li>";
-                $operator->getId();
-                
-                 require('./utils/formCommentaire.php'); 
+                echo "<input type='hidden' value='{$operator->getId()}' name='idOperator'>";
+                // var_dump($operator->getId());               
+                require('./utils/formCommentaire.php'); 
             
             echo "</ul>";
         }
