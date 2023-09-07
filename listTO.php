@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <title>Opérateurs par Destination</title>
 </head>
+
 <body>
     <h1>Opérateurs par Destination</h1>
 
@@ -11,6 +13,8 @@
     require_once("config/database.php");
     require("classes/Manager.php");
     require("classes/Tour_operator.php");
+    require("classes/Author.php");
+    require("classes/Review.php");
 
     // Récupérez la destination depuis le paramètre GET
     $destination = isset($_GET['destination']) ? $_GET['destination'] : null;
@@ -20,6 +24,7 @@
     } else {
         $tourOperatorManager = new Tour_operator();
         $operatorsByDestination = $tourOperatorManager->getOperatorsByLocation($destination);
+        var_dump($operatorsByDestination);
 
         if (empty($operatorsByDestination)) {
             echo "Aucun opérateur trouvé pour la destination : {$destination}";
@@ -28,9 +33,9 @@
             echo "<ul>";
             foreach ($operatorsByDestination as $operator) {
                 echo "<li>{$operator->getName()} (Site : <a href='{$operator->getLink()}' target='_blank'>{$operator->getLink()}</a>)</li>";
-                echo "<input type='hidden' value='{$operator->getId()}' name='idOperator'>";
-                // var_dump($operator->getId());               
-                require('./utils/formCommentaire.php'); 
+                $operator->getId();
+                
+                 require('./utils/formCommentaire.php'); 
             
             echo "</ul>";
         }
@@ -39,4 +44,5 @@
     }
     ?>
 </body>
+
 </html>

@@ -1,13 +1,14 @@
 <?php
 
-class Author {
+class Author extends Manager {
     private $id;
     private $name;
     private $grade;
     private $password;
 
     public function __construct() {
-            
+        parent::__construct();
+
     }
 
 
