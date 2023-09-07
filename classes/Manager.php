@@ -170,23 +170,5 @@ public function getAllAuthorMessagesByOperator(int $tour_operator_id){
     
     return $items;
 }
-
-    
-
-// public function getAllOperator()
-// {
-//     $query = $this->pdo->prepare("SELECT * FROM tour_operator");
-//     $query->execute();
-//     $item = [];
-//     while ($row = $query->fetch(PDO::FETCH_ASSOC)) {
-//         $TO = new Tour_operator();
-//         $TO->id = $row['id'];
-//         $TO->name = $row['name'];
-//         $TO->link = $row['link'];
-//         $item[] = $TO;
-//     }
-//     return $item;
-
-  
-    
+   
 }

@@ -16,35 +16,24 @@ if (!$destination) {
     $tourOperatorManager = new Tour_operator();
     $operatorsByDestination = $tourOperatorManager->getOperatorsByLocation($destination, $image);
 
-    if (empty($operatorsByDestination)) {
-        echo "Aucun opérateur trouvé pour la destination : {$destination}";
-    } else {
-        // Récupérez l'image spécifique pour cette destination
-        $destinationImage = null;
-        foreach ($image as $dest) {
-            if ($dest->getLocation() === $destination) {
-                $destinationImage = $dest->getImage();
-                break;
+        if (empty($operatorsByDestination)) {
+            echo "Aucun opérateur trouvé pour la destination : {$destination}";
+        } else {
+            echo "<h2>Opérateurs pour la destination : {$destination}</h2>";
+            echo "<ul>";
+            foreach ($operatorsByDestination as $operator) {
+                echo "<li>{$operator->getName()} (Site : <a href='{$operator->getLink()}' target='_blank'>{$operator->getLink()}</a>)</li>";
+                echo "<input type='hidden' value='{$operator->getId()}' name='idOperator'>";
+                $messages = new Review();
+                $messagesByAuthorbyOperators = $messages->getAllAuthorMessagesByOperator($operator->getId());
+   
+                 if (empty($messagesByAuthorbyOperators)) {
+            echo "Aucun message trouvé pour l'opérateur";}
+            else {
+                foreach ($messagesByAuthorbyOperators as $messagesByOperator) {
+                    echo $messagesByOperator->getAuthor();
+                    echo $messagesByOperator->getMessage();
+                }
             }
-        }
-
-        if ($destinationImage) {
-            echo "<img src='./assets/images/{$destinationImage}'>";
-        }
-
-        echo "<h1>{$destination}</h1>";
-        echo "<hr>";
-        foreach ($operatorsByDestination as $operator) {
-            echo "<div>";
-            echo "<a href='{$operator->getLink()}' target='_blank'>{$operator->getName()}</a>";
-            echo "<hr>";
-            echo "<p>score</p>";
-            echo "<p>{$operator->getPrice()}</p>";
-            var_dump($operator);
-            echo "<input type='hidden' value='{$operator->getId()}' name='idOperator'>";
-            echo "</div>";
-        }
-    }
-}
 
 
