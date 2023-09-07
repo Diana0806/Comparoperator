@@ -24,7 +24,7 @@
     } else {
         $tourOperatorManager = new Tour_operator();
         $operatorsByDestination = $tourOperatorManager->getOperatorsByLocation($destination);
-        var_dump($operatorsByDestination);
+     
 
         if (empty($operatorsByDestination)) {
             echo "Aucun opérateur trouvé pour la destination : {$destination}";
@@ -36,7 +36,7 @@
                 echo "<input type='hidden' value='{$operator->getId()}' name='idOperator'>";
                 $messages = new Review();
                 $messagesByAuthorbyOperators = $messages->getAllAuthorMessagesByOperator($operator->getId());
-                var_dump($messagesByAuthorbyOperators);
+   
                  if (empty($messagesByAuthorbyOperators)) {
             echo "Aucun message trouvé pour l'opérateur";}
             else {
