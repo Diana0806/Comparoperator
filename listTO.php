@@ -11,6 +11,7 @@
     require_once("config/database.php");
     require("classes/Manager.php");
     require("classes/Tour_operator.php");
+    require("classes/Author.php");
 
     // Récupérez la destination depuis le paramètre GET
     $destination = isset($_GET['destination']) ? $_GET['destination'] : null;
@@ -28,12 +29,16 @@
             echo "<ul>";
             foreach ($operatorsByDestination as $operator) {
                 echo "<li>{$operator->getName()} (Site : <a href='{$operator->getLink()}' target='_blank'>{$operator->getLink()}</a>)</li>";
-                $operator->getId();
                 
-                 require('./utils/formCommentaire.php'); 
             
             echo "</ul>";
+            
         }
+  
+        
+        $operator->getId();
+                
+                 require('./utils/formCommentaire.php'); 
     }
         
     }

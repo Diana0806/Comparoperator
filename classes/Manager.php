@@ -132,6 +132,15 @@ function createReview($message, $tourOperatorId, $authorName)
     ]);
 }
 
+
+public function getAllAuthor(){
+    $query = $this->pdo->prepare("SELECT * FROM `review`, author WHERE tour_operator_id = :tour_operator_id AND author_id = author.id;
+    ");
+    
+    $query->execute();
+    $item = $query->fetchAll();
+    return $item;
+}
     
 
     
