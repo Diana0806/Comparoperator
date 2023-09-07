@@ -33,14 +33,28 @@
             echo "<ul>";
             foreach ($operatorsByDestination as $operator) {
                 echo "<li>{$operator->getName()} (Site : <a href='{$operator->getLink()}' target='_blank'>{$operator->getLink()}</a>)</li>";
-                $operator->getId();
-                
-                 require('./utils/formCommentaire.php'); 
-            
-            echo "</ul>";
+                echo "<input type='hidden' value='{$operator->getId()}' name='idOperator'>";
+                $messages = new Review();
+                $messagesByAuthorbyOperators = $messages->getAllAuthorMessagesByOperator($operator->getId());
+                var_dump($messagesByAuthorbyOperators);
+                 if (empty($messagesByAuthorbyOperators)) {
+            echo "Aucun message trouvé pour l'opérateur";}
+            else {
+                foreach ($messagesByAuthorbyOperators as $messagesByOperator) {
+                    echo $messagesByOperator->getAuthor();
+                    echo $messagesByOperator->getMessage();
+                }
+            }
+
+
+
+
+
+                require('./utils/formCommentaire.php');
+
+                echo "</ul>";
+            }
         }
-    }
-        
     }
     ?>
 </body>

@@ -132,19 +132,57 @@ function createReview($message, $tourOperatorId, $authorName)
 }
 
 
+// public function getAllAuthorMessagesByOperator(int $tour_operator_id){
+//     try {
+//         $query = $this->pdo->prepare('SELECT * FROM review INNER JOIN author ON review.author_id = author.id INNER JOIN tour_operator ON review.tour_operator_id = tour_operator.id WHERE tour_operator_id = :tour_operator_id');
+//         $query->execute([
+//             ':tour_operator_id' => $tour_operator_id
+//         ]);
+//         $items = $query->fetchAll();
+//         return $items;
+//     } catch (PDOException $e) {
+//         die("Erreur lors de l'exécution de la requête : " . $e->getMessage());
+//     }
+// }
+
+
 public function getAllAuthorMessagesByOperator(int $tour_operator_id){
-  
-
-    $query = $this->pdo->prepare('SELECT * FROM review INNER JOIN author ON review.author_id = author.id INNER JOIN tour_operator ON review.tour_operator_id = tour_operator.id WHERE tour_operator_id = :tour_operator_id');
-    $query->execute([
-        ':tour_operator_id' => $tour_operator_id
-    ]);
-    $item = $query->fetchAll();
-    return $item;
+    $query = $this->pdo->prepare('SELECT author.name AS author_name, review.message, tour_operator.id AS operator_id
+        FROM review
+        INNER JOIN author ON review.author_id = author.id
+        INNER JOIN tour_operator ON review.tour_operator_id = tour_operator.id
+        WHERE tour_operator.id = :tour_operator_id');
+    
+    $query->execute([':tour_operator_id' => $tour_operator_id]);
+    
+    $items = [];
+    
+    while ($row = $query->fetch(PDO::FETCH_ASSOC)) {
+        $messagesByOperator = new Review();
+        $messagesByOperator->author = $row['author_name'];
+        $messagesByOperator->message = $row['message'];
+        $messagesByOperator->id = $row['operator_id'];
+        $items[] = $messagesByOperator;
+    }
+    
+    return $items;
 }
-    
 
     
+
+// public function getAllOperator()
+// {
+//     $query = $this->pdo->prepare("SELECT * FROM tour_operator");
+//     $query->execute();
+//     $item = [];
+//     while ($row = $query->fetch(PDO::FETCH_ASSOC)) {
+//         $TO = new Tour_operator();
+//         $TO->id = $row['id'];
+//         $TO->name = $row['name'];
+//         $TO->link = $row['link'];
+//         $item[] = $TO;
+//     }
+//     return $item;
 
   
     
