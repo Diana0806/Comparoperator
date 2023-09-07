@@ -5,7 +5,7 @@
         private $author;
 
         public function __construct($data) {
-            
+                parent::__construct();
         }
 
         public function getId()

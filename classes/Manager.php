@@ -4,7 +4,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/TpComparator/Comparoperator/config/da
 
 class Manager
 {
-    protected $pdo;
+    protected PDO $pdo;
     protected $table;
 
     public function __construct()
@@ -93,10 +93,10 @@ class Manager
 
     function getAuthorIdByName($authorName)
 {
-    $pdo = getPdo();
+    
     
     // Requête SQL pour obtenir l'ID de l'auteur en fonction de son nom
-    $query = $pdo->prepare('SELECT id FROM author WHERE name = :author_name');
+    $query = $this->pdo->prepare('SELECT id FROM author WHERE name = :author_name');
     $query->execute(['author_name' => $authorName]);
 
     $row = $query->fetch(PDO::FETCH_ASSOC);
@@ -110,7 +110,6 @@ class Manager
 
 function createReview($message, $tourOperatorId, $authorName)
 {
-    $pdo = getPdo();
     
     // Obtenir l'ID de l'auteur en fonction de son nom
     $authorId = $this->getAuthorIdByName($authorName); // Utilisez $this pour appeler la méthode de la classe courante
@@ -118,13 +117,13 @@ function createReview($message, $tourOperatorId, $authorName)
     // Vérifier si l'auteur existe, sinon l'ajouter
     if ($authorId === null) {
         // Insérer l'auteur dans la table 'author' et récupérer son nouvel ID
-        $insertAuthorQuery = $pdo->prepare('INSERT INTO author (name) VALUES (:name)');
+        $insertAuthorQuery = $this->pdo->prepare('INSERT INTO author (name) VALUES (:name)');
         $insertAuthorQuery->execute(['name' => $authorName]);
-        $authorId = $pdo->lastInsertId();
+        $authorId = $this->pdo->lastInsertId();
     }
     
     // Insérer le commentaire dans la table 'review'
-    $insertReviewQuery = $pdo->prepare('INSERT INTO review (message, tour_operator_id, author_id) VALUES (:message, :tour_operator_id, :author_id)');
+    $insertReviewQuery = $this->pdo->prepare('INSERT INTO review (message, tour_operator_id, author_id) VALUES (:message, :tour_operator_id, :author_id)');
     $insertReviewQuery->execute([
         'message' => $message,
         'tour_operator_id' => $tourOperatorId,
@@ -133,11 +132,13 @@ function createReview($message, $tourOperatorId, $authorName)
 }
 
 
-public function getAllAuthor(){
-    $query = $this->pdo->prepare("SELECT * FROM `review`, author WHERE tour_operator_id = :tour_operator_id AND author_id = author.id;
-    ");
-    
-    $query->execute();
+public function getAllAuthorMessagesByOperator(int $tour_operator_id){
+  
+
+    $query = $this->pdo->prepare('SELECT * FROM review INNER JOIN author ON review.author_id = author.id INNER JOIN tour_operator ON review.tour_operator_id = tour_operator.id WHERE tour_operator_id = :tour_operator_id');
+    $query->execute([
+        ':tour_operator_id' => $tour_operator_id
+    ]);
     $item = $query->fetchAll();
     return $item;
 }
