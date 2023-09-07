@@ -1,8 +1,8 @@
 <?php
     class Review extends Manager{
-        private $id;
-        private $message;
-        private $author;
+        protected $id;
+        protected $message;
+        protected $author;
 
         public function __construct() {
                 parent::__construct();

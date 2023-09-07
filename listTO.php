@@ -38,12 +38,18 @@
                 $messagesByAuthorbyOperators = $messages->getAllAuthorMessagesByOperator($operator->getId());
                 var_dump($messagesByAuthorbyOperators);
                  if (empty($messagesByAuthorbyOperators)) {
-            echo "Aucun message trouvé pour l'opérateur";
+            echo "Aucun message trouvé pour l'opérateur";}
+            else {
+                foreach ($messagesByAuthorbyOperators as $messagesByOperator) {
+                    echo $messagesByOperator->getAuthor();
+                    echo $messagesByOperator->getMessage();
+                }
+            }
 
 
 
 
-            
+
                 require('./utils/formCommentaire.php');
 
                 echo "</ul>";
