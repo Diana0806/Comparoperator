@@ -1,0 +1,22 @@
+.home {
+    background-image: url(../images/bghome6.jpg);
+    height: 900px;
+    background-size : contain;
+    background-size : cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.logo{
+    width : 70%;
+}
+
+.text-index {
+    margin-top : 15%;
+    color: rgb(255, 255, 255);
+    font-size: 20px;
+}
+
+.text-index button {
+    color: aliceblue;
+}
