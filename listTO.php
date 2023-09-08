@@ -29,6 +29,11 @@ if (!$destination) {
                 break;
             }
         }
+<<<<<<< HEAD
+    }
+}
+=======
+>>>>>>> bc2733d165e386271a7099773be99e23b00e7ff2
 
         echo "<h1 class='text-center text-light title'>{$destination}</h1>";
         echo "<div class='borderTop'></div>";
