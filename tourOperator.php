@@ -27,17 +27,17 @@ $listsoperators = $operator->getAllOperator();
                             <ul class="list-group list-group-flush">
                                 <div class="modal-body">
                                     <li class="list-group-item libg"> <?php echo $listoperator->getName(); ?> </li>
-                    </a>
-                    <li class="list-group-item libg2">A second item</li>
+                                    </a>
+                                    <li class="list-group-item libg2"> <img src="./assets/images/stars-removebg-preview.png" alt=""></li>
+                                </div>
+                            </ul>
+                        </div>
+                    
                 </div>
-                </ul>
+            <?php } ?>
         </div>
-
     </div>
-<?php } ?>
-</div>
-</div>
-</section>
+    </section>
 
 
 <div class="borderbottom"></div>
