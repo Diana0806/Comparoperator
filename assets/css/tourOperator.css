@@ -1,0 +1,46 @@
+.logo{
+    width : 70%;
+}
+
+.home {
+    background-color: 06427B;
+    height: 900px;
+    background-size : contain;
+    background-size : cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.bordertop {
+    border-bottom: solid 5px;
+    margin-right: 70%;
+    color: white;
+}
+
+.toperateur {
+    margin-top: 40px;
+}
+
+.custom-background-color {
+    background-color: 9CB7D0;
+}
+
+.libg {
+    background-color: 9CB7D0;
+    border: none;
+    height: 80px;
+    border-bottom: solid 5px;
+    color: 06427B;
+}
+.libg2 {
+    background-color: 9CB7D0;
+    border: none;
+    height: 80px;
+    color: 06427B;
+}
+
+.borderbottom {
+    border-bottom: solid 5px;
+    margin-left: 70%;
+    color: white;
+}

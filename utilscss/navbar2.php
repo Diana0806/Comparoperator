@@ -1,5 +1,5 @@
 
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body class="home">
 <nav class="navbar navbar-expand-lg navbar-light bg-transparent">
@@ -14,22 +14,21 @@
     <div class="collapse navbar-collapse" id="navbarsExample07">
       <ul class="navbar-nav mx-auto"> <!-- Utilisation de 'mx-auto' pour centrer les éléments -->
         <li class="nav-item">
-          <a class="nav-link" href="./index.php">Accueil </a>
+          <a class="nav-link text-light" href="./index.php">Accueil </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link ml-5 mr-5" href="./listvoyage.php">Destinations</a>
+          <a class="nav-link text-light ml-5 mr-5" href="./listvoyage.php">Destinations</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="./tourOperator.php">Tours Opérateur</a>
+          <a class="nav-link text-light" href="./tourOperator.php">Tours Opérateur</a>
         </li>
       </ul>
       
       <ul class="navbar-nav"> <!-- Élément à droite -->
         <li class="nav-item">
-          <a class="nav-link" href="./register.php">Se connecter</a>
+          <a class="nav-link text-light" href="./register.php">Se connecter</a>
         </li>
       </ul>
     </div>
   </div>
 </nav>
-

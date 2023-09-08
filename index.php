@@ -1,3 +1,6 @@
+
+<?php include('./utilscss/header.php') ?>
+<link rel="stylesheet" href="./assets/css/nav.css">
 <?php include('./utilscss/navbar.php'); ?>
 
 
