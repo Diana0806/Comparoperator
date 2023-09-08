@@ -170,5 +170,43 @@ public function getAllAuthorMessagesByOperator(int $tour_operator_id){
     
     return $items;
 }
+
+public function createRating(Rating $rating)
+    {
+        // Obtenir l'ID de l'auteur en fonction de son nom
+        $authorId = $this->getAuthorIdByName($rating->getAuthorName());
+
+        // Insérer la notation dans la table 'ratings'
+        $insertRatingQuery = $this->pdo->prepare('INSERT INTO ratings (message, tour_operator_id, author_id, rating) VALUES (:message, :tour_operator_id, :author_id, :rating)');
+        $insertRatingQuery->execute([
+            'message' => $rating->getMessage(),
+            'tour_operator_id' => $rating->getTourOperatorId(),
+            'author_id' => $authorId,
+            'rating' => $rating->getRating()
+        ]);
+    }
+
+    public function getAllRatingsByAuthorName($authorName)
+    {
+        // Obtenir toutes les notations de l'auteur en fonction de son nom
+        $query = $this->pdo->prepare('SELECT * FROM ratings WHERE author_id = :author_id');
+        $query->execute(['author_id' => $this->getAuthorIdByName($authorName)]);
+        $ratings = $query->fetchAll(PDO::FETCH_ASSOC);
+        return $ratings;
+    }
+
+    public function calculateAverageRating($tourOperatorId)
+{
+    $query = $this->pdo->prepare("SELECT AVG(rating) AS average_rating FROM ratings WHERE tour_operator_id = :tour_operator_id");
+    $query->execute(['tour_operator_id' => $tourOperatorId]);
+    $result = $query->fetch(PDO::FETCH_ASSOC);
+    
+    if ($result && $result['average_rating'] !== null) {
+        return round($result['average_rating'], 1); // Arrondi à une décimale
+    } else {
+        return 0; // Retourne 0 si aucune notation n'est trouvée
+    }
+}
+
    
 }

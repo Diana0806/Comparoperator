@@ -28,7 +28,7 @@ require('./classes/Tour_operator.php'); ?>
                                 <div class="modal-body">
                                     <li class="list-group-item libg"> <?php echo $listoperator->getName(); ?> </li>
                                     </a>
-                                    <li class="list-group-item libg2">A second item</li>
+                                    <li class="list-group-item libg2"> <img src="./assets/images/stars-removebg-preview.png" alt=""></li>
                                 </div>
                             </ul>
                         </div>

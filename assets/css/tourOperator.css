@@ -39,8 +39,13 @@
     color: 06427B;
 }
 
+.libg2 img {
+width: 80%;
+}
+
 .borderbottom {
     border-bottom: solid 5px;
     margin-left: 70%;
     color: white;
 }
+
