@@ -6,6 +6,8 @@ require("classes/Author.php");
 require("classes/Review.php");
 require("classes/Destination.php");
 
+include("./utilscss/navbar.php");
+
 $destination = isset($_GET['destination']) ? $_GET['destination'] : null;
 $toutvoyage = new Destination();
 $image = $toutvoyage->getAllDestination();
@@ -46,3 +48,5 @@ if (!$destination) {
         }
     }
 }
+
+include("./utilscss/footer.php");
