@@ -1,15 +1,59 @@
-body {
-    background-image: url('./assets/images/bghome.jpg');
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+    z-index: -1;
 }
 
-body.destination-rome {
-    background-image: url('./assets/images/Romepage.avif');
+.destination-Default {
+    background-image: url('../images/bghome.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
 }
 
-body.destination-londres {
-    background-image: url('./assets/images/Londonpage.avif');
+.destination-Rome {
+    background-image: url('../images/Romepage.avif');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
 }
 
-body.destination-monaco {
-    background-image: url('./assets/images/Monacopage.avif');
+.destination-Londres {
+    background-image: url('../images/Londonpage.avif');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.destination-Monaco {
+    background-image: url('../images/Monacopage.avif');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.destination-Tunis {
+    background-image: url('../images/Tunispage.avif');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.title {
+    font-size: 65px;
+}
+
+.borderTop {
+    border: solid 2px;
+    color: #9CB7D0;
+    width: 20%;
+}
+
+.logo {
+    width: 70%;
 }

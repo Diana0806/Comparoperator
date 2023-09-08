@@ -1,8 +1,17 @@
-const destinationBackgrounds = {
-    'Rome': 'Romepage.avif',
-    'Londres': 'Londonpage.avif',
-    'Monaco': 'Monacopage.avif',
-};
+const body = document.querySelector('body');
+
+// function getParameterByName(name) {
+//     name = name.replace('/[[]/, [).replace(/[]]/, ]');
+//     var regexS = '[?&] + name + =([^&#] *)';
+//     var regex = new RegExp(regexS);
+//     var results = regex.exec(window.location.search);
+//     if (results == null)
+//         return;
+//     else
+//         return decodeURIComponent(results[1].replace(/+/g,));
+// }
+
+
 
 const queryString = window.location.search;
 
@@ -11,12 +20,31 @@ function getDestinationFromQueryString(queryString) {
     return urlParams.get('destination');
 }
 
-const destination = getDestinationFromQueryString(queryString);
-
-const backgroundImagePath = destinationBackgrounds[destination];
-
-if (backgroundImagePath) {
-    document.body.style.backgroundImage = `url(${backgroundImagePath})`;
+function getDefaultImgFromQueryString(queryString) {
+    const urlParams = new URLSearchParams(queryString);
+    return urlParams.get('bgImg');
 }
 
-document.body.classList.add(`destination-${destination}`);
+let destination = getDestinationFromQueryString(queryString);
+
+if(getDefaultImgFromQueryString(queryString) === '0')
+{
+    body.classList.add('destination-Default');
+} else {
+    body.classList.add('destination-' + destination);
+}
+
+
+
+
+// const destination = getDestinationFromQueryString(queryString);
+
+// const backgroundImagePath = destinationBackgrounds[destination];
+
+// if (backgroundImagePath) {
+//     document.body.style.backgroundImage = `url(${backgroundImagePath})`;
+// }
+
+// console.log(getParameterByName(bgImg));
+
+// document.body.classList.add(`destination-${destination}`);

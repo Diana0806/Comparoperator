@@ -30,12 +30,8 @@ if (!$destination) {
             }
         }
 
-        if ($destinationImage) {
-            echo "<img src='./assets/images/{$destinationImage}'>";
-        }
-
-        echo "<h1>{$destination}</h1>";
-        echo "<hr>";
+        echo "<h1 class='text-center text-light title'>{$destination}</h1>";
+        echo "<div class='borderTop'></div>";
         foreach ($operatorsByDestination as $operator) {
             echo "<div>";
             echo "<a href='{$operator->getLink()}' target='_blank'>{$operator->getName()}</a>";
