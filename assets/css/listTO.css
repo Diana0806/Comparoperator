@@ -1,0 +1,15 @@
+body {
+    background-image: url('./assets/images/bghome.jpg');
+}
+
+body.destination-rome {
+    background-image: url('./assets/images/Romepage.avif');
+}
+
+body.destination-londres {
+    background-image: url('./assets/images/Londonpage.avif');
+}
+
+body.destination-monaco {
+    background-image: url('./assets/images/Monacopage.avif');
+}

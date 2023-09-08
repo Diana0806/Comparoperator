@@ -3,6 +3,7 @@
         protected $id;
         protected $name;
         protected $link;
+        protected $price;
         private $certificate;
         private $destinations;
         private $reviews;
@@ -49,5 +50,10 @@
         public function getScores()
         {
                 return $this->scores;
+        }
+
+        public function getPrice()
+        {
+                return $this->price;
         }
     }

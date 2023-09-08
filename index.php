@@ -1,27 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ComparOperator</title>
-</head>
-<body>
-    <?php
-        require_once("config/database.php");
-        require("classes/Manager.php");
-        require("classes/Destination.php");
+<?php include('./utilscss/navbar.php'); ?>
 
-        $destinationManager = new Destination();
-        // var_dump($destinationManager);
-        $allDestinations = $destinationManager->getAllDestination();
-        // var_dump($allDestinations);
 
-        foreach ($allDestinations as $destination) {
-            echo "<div>";
-            echo "<h2> Destination : " . "<a href='listTO.php?destination=" . $destination->getLocation() . "'>" . $destination->getLocation() . "</a>" . "</h2>";
-            echo "<h4> Prix : " . $destination->getPrice() . " €</h4>";
-            echo "</div>";
-        }
-    ?>
-</body>
-</html>
+<div class='container text-center text-index'>
+
+    <h1>Comparoperator</h1>
+    <p>" Embarquez pour une aventure sans limites, explorez des horizons lointains et créez des souvenirs qui illumineront votre vie pour toujours. Le monde vous attend, prêt à vous dévoiler ses merveilles."</p>
+    <button type="button" class="btn btn-transparent border-light">En savoir plus -> </button>
+
+</div>
+
+
+
+<?php include('./utilscss/footer.php'); ?>
