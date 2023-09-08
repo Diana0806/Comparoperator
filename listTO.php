@@ -35,5 +35,8 @@ if (!$destination) {
                     echo $messagesByOperator->getMessage();
                 }
             }
+        }
+    }
+}
 
 
