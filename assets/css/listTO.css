@@ -51,9 +51,31 @@ body::before {
 .borderTop {
     border: solid 2px;
     color: #9CB7D0;
-    width: 20%;
+    margin-right: 70%;
 }
+
+.borderBottom {
+    border: solid 2px;
+    color: #9CB7D0;
+    margin-left: 70%;
+    
+}
+/* .borderCenter {
+    background-color: 9CB7D0;
+    border: none;
+    height: 80px;
+    border-bottom: solid 5px;
+    color: 06427B;
+} */
 
 .logo {
     width: 70%;
+}
+
+.stp {
+    background-color: #06427B !important;
+}
+
+.link {
+    text-decoration: none;
 }

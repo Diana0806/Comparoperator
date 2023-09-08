@@ -6,7 +6,9 @@ require("classes/Author.php");
 require("classes/Review.php");
 require("classes/Destination.php");
 
-include("./utilscss/navbar.php");
+include("./utilscss/header.php"); ?>
+<link rel="stylesheet" href="assets/css/listTO.css">
+<?php include("./utilscss/navbar.php");
 
 $destination = isset($_GET['destination']) ? $_GET['destination'] : null;
 $toutvoyage = new Destination();
@@ -29,25 +31,27 @@ if (!$destination) {
                 break;
             }
         }
-<<<<<<< HEAD
     }
 }
-=======
->>>>>>> bc2733d165e386271a7099773be99e23b00e7ff2
 
         echo "<h1 class='text-center text-light title'>{$destination}</h1>";
-        echo "<div class='borderTop'></div>";
-        foreach ($operatorsByDestination as $operator) {
-            echo "<div>";
-            echo "<a href='{$operator->getLink()}' target='_blank'>{$operator->getName()}</a>";
-            echo "<hr>";
-            echo "<p>score</p>";
-            echo "<p>{$operator->getPrice()}</p>";
-            var_dump($operator);
-            echo "<input type='hidden' value='{$operator->getId()}' name='idOperator'>";
-            echo "</div>";
-        }
-    }
-}
-
+        echo "<div class='borderTop'></div>"; ?>
+        <div class="container text-center">
+            <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3">
+                <?php foreach ($operatorsByDestination as $operator) {
+                    echo "<div class='col-3 mr-5 ml-5 mt-5'>";
+                    echo "<div class='card stp'>";
+                    echo "<a class='link text-light' href='{$operator->getLink()}' target='_blank'>{$operator->getName()}</a>";
+                    echo "<hr class='w-75'>";
+                    echo "<p>score</p>";
+                    echo "<p class ='text-light'>{$operator->getPrice()} €</p>";
+                    // var_dump($operator);
+                    echo "</div>";
+                    echo "<input type='hidden' value='{$operator->getId()}' name='idOperator'>";
+                    echo "</div>";
+                } ?>
+            </div>
+        </div>
+        <div class='borderBottom'></div>
+<?php
 include("./utilscss/footer.php");
