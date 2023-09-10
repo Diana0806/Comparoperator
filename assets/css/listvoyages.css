@@ -1,0 +1,45 @@
+
+.menu .btn {
+    color: #6D8194;
+}
+
+
+.bordertop {
+    border-bottom: solid 5px;
+    margin-right: 70%;
+    color: #06427B;
+}
+
+
+h1 {
+    color: #06427B;
+}
+
+header {
+    color: #6D8194;
+}
+
+.cardvoyage {
+    background-color: rgba(156, 183, 208, 0.15);
+    color: #06427B;
+    width: 280px;
+    height: 344px;
+}
+
+.cardvoyage .card-img-top {
+    width: 248px;
+    height: 248px;
+    margin: 16px;
+}
+
+
+
+.logo{
+    width : 70%;
+}
+
+.borderbottom {
+    border-bottom: solid 5px;
+    margin-left: 70%;
+    color: #06427B;
+}
