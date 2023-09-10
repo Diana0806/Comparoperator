@@ -32,6 +32,7 @@ $listsoperators = $operator->getAllOperator();
                     <li class="list-group-item libg2">
                         <?php require('./utils/formRating.php')?>
                     </li>
+                    <li class="list-group-item libg2">    <a href="listMessage.php?operator=<?php echo $listoperator->getId(); ?>"> Avis -> </li> </a>
                 </div>
             </ul>
         </div>
