@@ -117,7 +117,6 @@
         // var_dump($allDestinations);
 
         foreach ($allDestinations as $destination) {
-<<<<<<< HEAD
 
             if($destination->getImage() === ''){
                 $bgImg = 0;
@@ -133,35 +132,5 @@
             echo "</div>";
         }
     ?>
-=======
-        //     echo "<div>";
-        //     echo "<h2> Destination : " . "<a href='listTO.php?destination=" . $destination->getLocation() . "'>" . $destination->getLocation() . "</a>" . "</h2>";
-        //     echo "<h4> Prix : " . $destination->getPrice() . " €</h4>";
-        //     echo "</div>";
-        // }
-      ?>
-
-        <div class="col py-3">
-          <a href="destination.php?country=<?php echo $destination->getId(); ?>">
-          <div class="cardvoyage shadow-sm">
-            <img class="bd-placeholder-img card-img-top" src="./assets/images/<?php echo $destination->getId(); ?>.jpg">
-            <div class="card-body">
-              <h5 class="card-text"><?php echo $destination->getLocation(); ?></h5>
-              <p>Prix : <?php echo $destination->getPrice(); ?> €</p>
-            </div>
-          </div>
-          </a>
-        </div>
-
-        <?php
-          }
-        ?>
-
-      </div>
-    </div>
-  </div>
-</main>
-
->>>>>>> ccf211ae47ef12d4faf9fe09626117b99fb541db
 </body>
 </html>
