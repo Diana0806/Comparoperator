@@ -2,6 +2,7 @@
 
 require('./utilscss/navbar2.php'); ?>
 <link rel="stylesheet" href="./assets/css/tourOperator.css">
+<link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
 <?php require('./classes/Manager.php');
 require('./classes/Tour_operator.php'); ?>
 
@@ -20,23 +21,31 @@ $listsoperators = $operator->getAllOperator();
 
     <div class="container text-center">
         <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3">
-            <?php foreach ($listsoperators as $listoperator) { ?>
-                <div class="col-3 mr-5 ml-5 mt-5">
-                    <a href="<?php echo $listoperator->getLink(); ?>" class="card-link bg-lien">
-                        <div class="card custom-background-color" style="width: 18rem;">
-                            <ul class="list-group list-group-flush">
-                                <div class="modal-body">
-                                    <li class="list-group-item libg"> <?php echo $listoperator->getName(); ?> </li>
-                    </a>
-                                    <li class="list-group-item libg2">A second item</li>
-                                </div>
-                            </ul>
-                        </div>
+        <?php foreach ($listsoperators as $listoperator) { ?>
+    <div class="col-3 mr-5 ml-5 mt-5">
+        <div class="card custom-background-color" style="width: 18rem;">
+            <ul class="list-group list-group-flush">
+                <div class="modal-body">
+                    <li class="list-group-item libg">
+                        <a href="<?php echo $listoperator->getLink(); ?>"><?php echo $listoperator->getName(); ?></a>
+                    </li>
+                    <li class="list-group-item libg2">
+                        <?php require('./utils/formRating.php')?>
+                    </li>
                 </div>
-            <?php } ?>
+            </ul>
+        </div>
+    </div>
+<?php } ?>
+
+
+
         </div>
     </div>
 </section>
 
 
 <div class="borderbottom"></div>
+
+<?php require('./utilscss/footer.php')?>
+
