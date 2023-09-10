@@ -34,7 +34,7 @@
       ?>
 
         <div class="col py-3">
-          <a href="destination.php?country=<?php echo $destination->getLocation(); ?>">
+          <a href="listTO.php?destination=<?php echo $destination->getLocation(); ?>">
           <div class="cardvoyage shadow-sm">
             <img class="bd-placeholder-img card-img-top" src="./assets/images/<?php echo $destination->getLocation(); ?>.avif">
             <div class="card-body">

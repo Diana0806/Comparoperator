@@ -14,6 +14,11 @@ $destination = isset($_GET['destination']) ? $_GET['destination'] : null;
 $toutvoyage = new Destination();
 $image = $toutvoyage->getAllDestination();
 
+$destination = isset($_GET['destination']) ? $_GET['destination'] : null;
+$toutvoyage = new Destination();
+$image = $toutvoyage->getAllDestination();
+$operatorsByDestination = array(); // Initialisez $operatorsByDestination comme un tableau vide
+
 if (!$destination) {
     echo "La destination n'a pas été spécifiée.";
 } else {
@@ -33,6 +38,7 @@ if (!$destination) {
         }
     }
 }
+
 
         echo "<h1 class='text-center text-light title'>{$destination}</h1>";
         echo "<div class='borderTop'></div>"; ?>
