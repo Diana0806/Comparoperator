@@ -14,6 +14,8 @@ body::before {
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
+    height: 900px;
+
 }
 
 .destination-Rome {
@@ -21,6 +23,8 @@ body::before {
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
+    height: 900px;
+
 }
 
 .destination-Londres {
@@ -28,6 +32,8 @@ body::before {
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
+    height: 900px;
+
 }
 
 .destination-Monaco {
@@ -35,6 +41,8 @@ body::before {
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
+    height: 900px;
+
 }
 
 .destination-Tunis {
@@ -42,6 +50,24 @@ body::before {
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
+    height: 900px;
+
+}
+.destination-Tokyo {
+    background-image: url('../images/Tokyo.avif');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 900px;
+
+}
+.destination-Bourg-en-bresse {
+    background-image: url('../images/Bourg-en-Bresse.avif');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 900px;
+
 }
 
 .title {
