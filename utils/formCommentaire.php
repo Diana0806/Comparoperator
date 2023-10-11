@@ -1,4 +1,4 @@
-<?php require_once($_SERVER['DOCUMENT_ROOT'] . '/TpComparator/Comparoperator/config/database.php'); ?>
+<?php require_once(__DIR__ . '/TpComparator/Comparoperator/config/database.php'); ?>
 
 <form action="./utils/insertCommentaire.php" method="post">
 <input type="hidden" name="tour_operator_id" value="<?php echo $operator->getId(); ?>">
