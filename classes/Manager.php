@@ -22,7 +22,7 @@ class Manager
             $destination->id = $row['id'];
             $destination->location = $row['location'];
             $destination->price = $row['price'];
-            $destination->image = $row['image'];
+            // $destination->image = $row['image'];
             $item[] = $destination;
         }
         return $item;
